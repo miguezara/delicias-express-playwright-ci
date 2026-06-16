@@ -205,3 +205,11 @@ El objetivo es que los alumnos vean que una suite E2E también es software y, po
 ```bash
 npm install
 npm run ci
+
+## Seguridad
+
+El proyecto utiliza GitHub CodeQL para análisis estático de seguridad.
+
+Resultados:
+
+Security → Code scanning
