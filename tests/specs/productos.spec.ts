@@ -24,4 +24,14 @@ test.describe('Productos', () => {
     await expect(productosPage.productoPorNombre('Bowl vegetal')).toContainText('Etiqueta: Saludable');
     await expect(productosPage.productoPorNombre('Salmón con patatas')).toContainText('9,95 €');
   });
+
+  test('el menú contiene exactamente cuatro enlaces', async ({ page, menu }) => {
+    await page.goto('/index.html');
+  
+    await menu.comprobarVisible();
+  
+    await expect(
+      menu.raiz().getByRole('link')
+    ).toHaveCount(4);
+  });
 });

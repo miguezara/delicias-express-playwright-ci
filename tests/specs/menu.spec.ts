@@ -28,4 +28,13 @@ test.describe('MenuComponent', () => {
     await menu.irAInicio();
     await expect(page).toHaveURL(/index\.html/);
   });
+  test('el menú contiene exactamente cuatro enlaces', async ({ page, menu }) => {
+    await page.goto('/index.html');
+  
+    await menu.comprobarVisible();
+  
+    await expect(
+      menu.raiz().getByRole('link')
+    ).toHaveCount(4);
+  });
 });
