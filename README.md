@@ -193,7 +193,15 @@ El objetivo es que los alumnos vean que una suite E2E también es software y, po
 - `patrones.spec.ts`
 - `app-object-strategy-di.spec.ts`
 
+
+
 ## Mensaje final para alumnos
 
 > Un test que pasa es útil.  
 > Una suite que se entiende, se mantiene y evoluciona es profesional.
+
+## Ejecución rápida
+
+```bash
+npm install
+npm run ci
