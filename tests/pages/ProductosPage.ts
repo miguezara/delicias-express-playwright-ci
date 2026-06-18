@@ -24,6 +24,9 @@ export class ProductosPage implements PaginaProductos {
   async abrir() {
     await this.page.goto('/productos.html');
   }
+  async abrirDesdeApi() {
+    await this.page.goto('/productos.html?fuente=api');
+  }
 
   titulo() {
     return this.page.getByRole('heading', { name: /nuestros platos preparados/i });

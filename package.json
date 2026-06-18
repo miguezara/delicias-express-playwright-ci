@@ -1,29 +1,26 @@
 {
-  "name": "delicias-express-playwright-completo",
+  "name": "DELICIASEXPRESS",
   "version": "1.0.0",
   "private": true,
   "description": "Laboratorio local-first completo con Playwright, POM, Component Objects, fixtures, Builder, Factory, Decorator, AppObject y Strategy con DI.",
   "scripts": {
-  "start": "vite ./web --host 127.0.0.1 --port 4173",
-  "test": "playwright test",
-  "test:ci": "playwright test --project=chromium",
-  "test:ui": "playwright test --ui",
-  "test:headed": "playwright test --headed",
-  "test:debug": "playwright test --debug",
-  "report": "playwright show-report",
+    "start": "vite ./web --host 127.0.0.1 --port 4173",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "report": "playwright show-report",
+    "test:ci": "playwright test --project=chromium",
+    "quality": "npm run lint && npm run validate:html && npm run lint:css",
+    "ci": "npm run quality && npm run test:ci",
+  
+    "api": "node ./api/delicias-api.mjs",
+    "test:api": "playwright test tests/api --project=chromium",
+    "test:hibrido": "playwright test tests/hibrido --project=chromium",
+    "test:mock": "playwright test tests/mock --project=chromium",
+    "test:api-ui": "playwright test tests/api tests/hibrido tests/mock --project=chromium"
+  },
 
-  "lint": "eslint \"**/*.{js,mjs,cjs,ts}\"",
-  "lint:fix": "eslint \"**/*.{js,mjs,cjs,ts}\" --fix",
-  "lint:strict": "eslint \"**/*.{js,mjs,cjs,ts}\" --max-warnings=0",
-  "lint:playwright": "eslint \"tests/**/*.ts\"",
-
-  "validate:html": "html-validate \"web/**/*.html\"",
-
-  "lint:css": "stylelint \"web/**/*.css\"",
-
-  "quality": "npm run lint && npm run validate:html && npm run lint:css",
-  "ci": "npm run quality && npm run test:ci"
- },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.53.0",

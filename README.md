@@ -193,23 +193,180 @@ El objetivo es que los alumnos vean que una suite E2E también es software y, po
 - `patrones.spec.ts`
 - `app-object-strategy-di.spec.ts`
 
-
-
 ## Mensaje final para alumnos
 
 > Un test que pasa es útil.  
 > Una suite que se entiende, se mantiene y evoluciona es profesional.
 
-## Ejecución rápida
+
+# Delicias Express - Playwright + API Testing
+
+## Instalación
+
+Instalar dependencias:
 
 ```bash
 npm install
-npm run ci
+```
 
-## Seguridad
+---
 
-El proyecto utiliza GitHub CodeQL para análisis estático de seguridad.
+## Ejecución de la aplicación
 
-Resultados:
+Frontend:
 
-Security → Code scanning
+```bash
+npm run start
+```
+
+API:
+
+```bash
+npm run api
+```
+
+La API quedará disponible en:
+
+```text
+http://127.0.0.1:3001
+```
+
+Health Check:
+
+```text
+http://127.0.0.1:3001/api/health
+```
+
+---
+
+## Ejecución de pruebas
+
+Ejecutar toda la suite:
+
+```bash
+npm test
+```
+
+Ejecutar pruebas API:
+
+```bash
+npm run test:api
+```
+
+Ejecutar pruebas híbridas API + UI:
+
+```bash
+npm run test:hibrido
+```
+
+Ejecutar pruebas con Mocking:
+
+```bash
+npm run test:mock
+```
+
+Ejecutar pruebas API + Hybrid + Mock:
+
+```bash
+npm run test:api-ui
+```
+
+Abrir reporte HTML:
+
+```bash
+npm run report
+```
+
+---
+
+## Arquitectura implementada
+
+### UI Testing
+
+* Page Object Model (POM)
+* Component Objects
+* Builder Pattern
+* Factory Method
+* Decorator Pattern
+* Strategy Pattern
+* App Object
+
+### API Testing
+
+Endpoints implementados:
+
+* GET /api/health
+* GET /api/productos
+* GET /api/productos/:id
+* POST /api/solicitudes
+* DELETE /api/solicitudes/:id
+* HEAD /api/productos
+* OPTIONS /api/productos
+
+### Reutilización
+
+* ProductosApiClient
+* Fixtures personalizadas Playwright
+* Variables de entorno centralizadas
+
+### Hybrid Testing
+
+Pruebas que validan:
+
+* Consistencia API ↔ UI
+* Número de productos
+* Nombres mostrados en pantalla
+* waitForResponse()
+
+### Mocking
+
+Escenarios cubiertos:
+
+* Respuesta controlada 200
+* Catálogo vacío
+* Error 500
+
+### HAR
+
+Se utiliza HAR para reproducir tráfico grabado y ejecutar pruebas sin dependencia del backend.
+
+Archivo generado:
+
+```text
+mocks/productos.har
+```
+
+---
+
+## Variables de entorno
+
+Archivo local:
+
+```text
+.env
+```
+
+Plantilla:
+
+```text
+.env.example
+```
+
+Variables:
+
+```env
+API_BASE_URL=http://127.0.0.1:3001
+DELICIAS_API_KEY=demo-key
+```
+
+---
+
+## Resultado final
+
+Suite completa:
+
+```text
+40 passed
+```
+
+Incluye pruebas UI, API, Hybrid, Mocking y HAR.

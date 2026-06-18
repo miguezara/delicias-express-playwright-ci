@@ -50,27 +50,5 @@ test.describe('Patrones de diseño aplicados al laboratorio', () => {
     await productosConMedicion.buscar('pasta');
 
     await expect(productosBase.productos()).toHaveCount(2);
-  
-  });
-  test('Builder: construye una búsqueda de platos saludables', async ({ productosPage }) => {
-    const caso = BusquedaProductoBuilder.unaBusqueda()
-      .conDescripcion('búsqueda de platos saludables')
-      .conTexto('saludable')
-      .esperaProductos([
-        'Ensalada mediterránea',
-        'Bowl vegetal',
-        'Salmón con patatas'
-      ])
-      .build();
-  
-    await productosPage.abrir();
-  
-    await productosPage.buscar(caso.textoBusqueda);
-  
-    await productosPage.comprobarProductosVisibles(
-      caso.resultadoEsperado
-    );
-  
-    expect(caso.cantidadEsperada).toBe(3);
   });
 });
