@@ -370,3 +370,4 @@ Suite completa:
 ```
 
 Incluye pruebas UI, API, Hybrid, Mocking y HAR.
+
